@@ -13,7 +13,7 @@ import pandas as pd
     
 def exercise(data):
 
-    time=[i for i in range (0,120,5)]  
+    time=[i for i in range (0,115,5)]  
     x=np.array(time).reshape((-1,1))
     y=[]
      
@@ -32,7 +32,7 @@ def exercise(data):
     predict(y_pred,time)
 
     
-    return y_pred,time,isf
+    return y_pred,time
 
 
 
@@ -58,7 +58,7 @@ def predict(change,timelist):
 with open('morningexercise.csv') as csvfile:
     reader= csv.reader(csvfile)
     data=list(reader)
-    y_pred,time,isf_val=calc_isf(data)
+    y_pred,time=exercise(data)
     plt.plot(time, y_pred,'r', label ="Morning")
 
 
@@ -67,9 +67,8 @@ with open('morningexercise.csv') as csvfile:
 with open('eveningexercise.csv') as csvfile:
     reader= csv.reader(csvfile)
     data=list(reader)
-    y_pred,time,isf_val=calc_isf(data)
+    y_pred,time=exercise(data)
     plt.plot(time, y_pred,'g', label ="Evening")
-
 
 
 
